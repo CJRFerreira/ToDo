@@ -29,12 +29,13 @@ class App extends Component {
       text: value,
       id: toDoId
     };
+    
+    
+    this.setState((state) => {
+      let temp = state.data.slice(0);
 
-    let temp = this.state.data.slice(0);
+      temp.push(toDo);
 
-    temp.push(toDo);
-
-    this.setState(() => {
       return {
         data: temp
       };
@@ -66,6 +67,22 @@ class App extends Component {
     });
   }
 
+  markFieldInvalid = () => {
+    this.setState(() => {
+      return {
+        isValid: false
+      };
+    });
+  }
+
+  markFieldValid = () => {
+    this.setState(() => {
+      return {
+        isValid: true
+      };
+    });
+  }
+
   isFieldEmpty = (event) => {
     const eventValue = event.target.value;
 
@@ -75,20 +92,7 @@ class App extends Component {
       };
     });
 
-    if (!eventValue || eventValue.length === 0) {
-      this.setState(() => {
-        return {
-          isValid: false
-        };
-      });
-    }
-    else {
-      this.setState(() => {
-        return {
-          isValid: true
-        };
-      });
-    }
+    (!eventValue || eventValue.length === 0) ? this.markFieldInvalid() : this.markFieldValid();
   }
 
   render() {

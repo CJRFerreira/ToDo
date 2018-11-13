@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { ToDo } from "./ToDo";
 
 export class ToDoList extends Component{
-
     render(){
         const items = this.props.toDos.map((toDo) => {
             return (
@@ -14,6 +13,8 @@ export class ToDoList extends Component{
             )
         });
         
-        return (<ul>{items}</ul>);
+        return (
+            <ul>{items}</ul>
+        );
     }
 }
