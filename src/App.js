@@ -52,32 +52,15 @@ class App extends Component {
     });
   }
 
-  markFieldInvalid = () => {
-    this.setState(() => {
-      return {
-        isValid: false
-      };
-    });
-  }
-
-  markFieldValid = () => {
-    this.setState(() => {
-      return {
-        isValid: true
-      };
-    });
-  }
-
   isFieldEmpty = (event) => {
     const eventValue = event.target.value;
 
     this.setState(() => {
       return {
-        toDo: eventValue
+        toDo: eventValue,
+        isValid: (eventValue || eventValue.length > 0)
       };
     });
-
-    (!eventValue || eventValue.length === 0) ? this.markFieldInvalid() : this.markFieldValid();
   }
 
   render() {
