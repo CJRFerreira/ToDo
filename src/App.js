@@ -58,7 +58,7 @@ class App extends Component {
     this.setState(() => {
       return {
         toDo: eventValue,
-        isValid: (eventValue || eventValue.length > 0)
+        isValid: (eventValue && eventValue.length > 0)
       };
     });
   }
