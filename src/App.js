@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Title } from './components/Title';
 import { ToDoList } from './components/ToDoList';
 import { ToDoForm } from './components/ToDoForm';
+import Grid from '@material-ui/core/Grid';
 import './App.css';
 
 class App extends Component {
@@ -23,7 +24,7 @@ class App extends Component {
       text: value,
       id: toDoId
     };
-    
+
     this.setState((state) => {
       let temp = state.data.slice(0);
 
@@ -66,23 +67,31 @@ class App extends Component {
   render() {
     return (
       <div>
-        <div className='App-header'>
-          <Title />
-        </div>
-        <div className='App-form'>
-          <ToDoForm
-            addToDo={this.addToDo}
-            isFieldEmpty={this.isFieldEmpty}
-            toDo={this.state.toDo}
-            isValid={this.state.isValid}
-          />
-        </div>
-        <div className='App-list'>
-          <ToDoList
-            toDos={this.state.data}
-            removeToDo={this.removeToDo}
-          />
-        </div>
+        <Grid container spacing={16}>
+          <Grid item xs={12}>
+            <div className='App-header'>
+              <Title />
+            </div>
+          </Grid>
+          <Grid item xs={12}>
+            <div className='App-form'>
+              <ToDoForm
+                addToDo={this.addToDo}
+                isFieldEmpty={this.isFieldEmpty}
+                toDo={this.state.toDo}
+                isValid={this.state.isValid}
+              />
+            </div>
+          </Grid>
+          <Grid direction="center" justify="center" alignItems="center" container xs={12}>
+            <div className='App-list'>
+              <ToDoList
+                toDos={this.state.data}
+                removeToDo={this.removeToDo}
+              />
+            </div>
+          </Grid>
+        </Grid>
       </div>
     );
   }
