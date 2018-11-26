@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import List from '@material-ui/core/List';
 import Paper from '@material-ui/core/Paper';
-import { ToDo } from "./ToDo";
+import { ToDoItem } from "./ToDoItem";
 
 export class ToDoList extends Component {
     render() {
         const items = this.props.toDos.map((toDo) => {
             return (
-                <ToDo
+                <ToDoItem
                     toDo={toDo}
                     key={toDo.id}
                     removeToDo={this.props.removeToDo}
